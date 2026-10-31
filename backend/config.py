@@ -13,3 +13,4 @@ class Config:
     ).replace("postgres://", "postgresql://", 1)
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
