@@ -40,3 +40,45 @@ class AuditLog(db.Model):
         db.DateTime,
         default=datetime.utcnow
     )
+
+class Opportunity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    title = db.Column(db.String(200), nullable=False)
+    category = db.Column(db.String(50), nullable=False)
+
+    description = db.Column(db.Text, nullable=False)
+    eligibility = db.Column(db.Text, nullable=True)
+
+    organizer = db.Column(db.String(150), nullable=True)
+    location = db.Column(db.String(200), nullable=True)
+    mode = db.Column(db.String(30), nullable=True)
+
+    application_url = db.Column(db.String(500), nullable=True)
+
+    start_date = db.Column(db.Date, nullable=True)
+    end_date = db.Column(db.Date, nullable=True)
+    deadline = db.Column(db.Date, nullable=True)
+
+    status = db.Column(
+        db.String(20),
+        nullable=False,
+        default="draft"
+    )
+
+    created_by = db.Column(
+        db.Integer,
+        db.ForeignKey("user.id"),
+        nullable=False
+    )
+
+    created_at = db.Column(
+        db.DateTime,
+        default=datetime.utcnow
+    )
+
+    updated_at = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow
+    )
