@@ -4,7 +4,9 @@ from sqlalchemy import text
 
 from config import Config
 from models import db
+from auth import auth_bp
 
+app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app = Flask(__name__)
 
 # Load configuration
