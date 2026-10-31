@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | LEARNOVA</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, Arial, sans-serif;
+    background: #071326;
+    color: #edf5ff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+:root {
+    --blue: #2588f5;
+    --teal: #35d5c6;
+    --muted: #a9bdd4;
+}
+
+header {
+    padding: 22px 7%;
+    background: #091a31;
+    border-bottom: 1px solid #203b5b;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--teal);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 18px;
+    background: radial-gradient(
+        ellipse at 50% 20%,
+        #183d68 0%,
+        #0b1e38 48%,
+        #071326 100%
+    );
+}
+
+.login-container {
+    width: 100%;
+    max-width: 480px;
+    background: #102440;
+    border: 1px solid #274768;
+    border-radius: 18px;
+    padding: 38px;
+    box-shadow: 0 20px 60px #0005;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.heading h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.heading h1 span {
+    color: var(--teal);
+}
+
+.heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.portal-label {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.portals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+    margin-bottom: 25px;
+}
+
+.portal {
+    background: #0a1b32;
+    color: #dceaff;
+    border: 1px solid #274768;
+    border-radius: 9px;
+    padding: 13px 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    min-height: 75px;
+}
+
+.portal .symbol {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.portal.active {
+    background: #153a55;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin: 17px 0 8px;
+    color: #dceaff;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #315273;
+    background: #091a31;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: var(--teal);
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 65px;
+}
+
+.show-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--teal);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    background: var(--blue);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    filter: brightness(1.12);
+}
+
+.message {
+    display: none;
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-align: center;
+    background: #091a31;
+    color: var(--teal);
+}
+
+.register {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.register a,
+.back a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.back {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    font-size: 12px;
+    background: #050f1e;
+}
+
+@media(max-width: 450px) {
+    .login-container {
+        padding: 25px 18px;
+    }
+
+    .portal {
+        font-size: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">LEARN<span>OVA</span></div>
+</header>
+
+<main>
+
+<div class="login-container">
+
+    <div class="heading">
+        <h1>Welcome <span>Back!</span></h1>
+        <p>Learn. Innovate. Connect.</p>
+    </div>
+
+    <p class="portal-label">Choose your login portal</p>
+
+    <div class="portals">
+
+        <button class="portal active"
+                type="button"
+                data-role="student">
+            <span class="symbol">🎓</span>
+            Student
+        </button>
+
+        <button class="portal"
+                type="button"
+                data-role="professional">
+            <span class="symbol">🏫</span>
+            Teacher / Partner
+        </button>
+
+        <button class="portal"
+                type="button"
+                data-role="admin">
+            <span class="symbol">🛡️</span>
+            Admin
+        </button>
+
+    </div>
+
+    <form id="loginForm">
+
+        <label for="email">Email Address</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            autocomplete="username"
+            required
+        >
+
+        <label for="password">Password</label>
+
+        <div class="password-box">
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button
+                class="show-password"
+                type="button"
+                id="togglePassword">
+                Show
+            </button>
+        </div>
+
+        <button class="login-button"
+                type="submit"
+                id="loginButton">
+            Login to LEARNOVA →
+        </button>
+
+        <div class="message" id="message"
+             role="status" aria-live="polite"></div>
+
+    </form>
+
+    <div class="register" id="registerSection">
+        New to LEARNOVA?
+        <a href="register.html">Create an account</a>
+    </div>
+
+    <div class="back">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+</div>
+
+</main>
+
+<footer>
+    © 2026 LEARNOVA. Learn. Innovate. Connect.
+</footer>
+
+<script>
+
+// Set this to the deployed Flask backend URL later.
+// Keep empty only when frontend and backend share the same origin.
+const API_BASE_URL = "";
+
+let selectedRole = "student";
+
+const portalButtons = document.querySelectorAll(".portal");
+const message = document.getElementById("message");
+const loginForm = document.getElementById("loginForm");
+const loginButton = document.getElementById("loginButton");
+
+// Change login portal
+portalButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        portalButtons.forEach(item =>
+            item.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        selectedRole = button.dataset.role;
+
+        message.style.display = "none";
+
+        document.getElementById("registerSection").style.display =
+            selectedRole === "admin" ? "none" : "block";
+
+    });
+
+});
+
+// Show / Hide password
+document.getElementById("togglePassword")
+.addEventListener("click", function() {
+
+    const password = document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+        this.textContent = "Hide";
+    } else {
+        password.type = "password";
+        this.textContent = "Show";
+    }
+
+});
+
+// Login request
+loginForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    message.style.display = "block";
+    message.textContent = "Connecting to LEARNOVA...";
+
+    loginButton.disabled = true;
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    try {
+
+        const response = await fetch(
+            `${API_BASE_URL}/api/auth/login`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Login failed.");
+        }
+
+        const userRole = data.user.role;
+
+        const roleMatches =
+            (selectedRole === "student" && userRole === "student") ||
+            (
+                selectedRole === "professional" &&
+                ["teacher", "school", "industry_partner"].includes(userRole)
+            ) ||
+            (selectedRole === "admin" && userRole === "admin");
+
+        if (!roleMatches) {
+
+            await fetch(`${API_BASE_URL}/api/auth/logout`, {
+                method: "POST",
+                credentials: "include"
+            });
+
+            throw new Error("This account does not belong to the selected portal.");
+
+        }
+
+        message.textContent =
+            "Login successful! Welcome, " + data.user.full_name + ".";
+
+        // Dashboard pages will be connected in the next development step.
+
+    } catch (error) {
+
+        message.textContent = error.message;
+
+    } finally {
+
+        loginButton.disabled = false;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
