@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | LEARNOVA</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+    --blue:#2588f5;
+    --teal:#35d5c6;
+    --muted:#a9bdd4;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:#071326;
+    color:#edf5ff;
+    min-height:100vh;
+}
+
+header{
+    padding:22px 7%;
+    background:#091a31;
+    border-bottom:1px solid #203b5b;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{color:var(--teal)}
+
+main{
+    min-height:calc(100vh - 130px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:45px 18px;
+    background:radial-gradient(
+        ellipse at 50% 20%,
+        #183d68 0%,
+        #0b1e38 48%,
+        #071326 100%
+    );
+}
+
+.container{
+    width:100%;
+    max-width:520px;
+    padding:38px;
+    background:#102440;
+    border:1px solid #274768;
+    border-radius:18px;
+    box-shadow:0 20px 60px #0005;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.heading h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.heading h1 span{color:var(--teal)}
+
+.heading p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+label{
+    display:block;
+    margin:17px 0 8px;
+    font-size:13px;
+    color:#dceaff;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    border:1px solid #315273;
+    border-radius:8px;
+    background:#091a31;
+    color:white;
+    font-size:14px;
+    outline:none;
+}
+
+input:focus,select:focus{
+    border-color:var(--teal);
+}
+
+select option{
+    background:#102440;
+}
+
+.hint{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:7px;
+}
+
+.register-button{
+    width:100%;
+    padding:15px;
+    margin-top:25px;
+    border:0;
+    border-radius:8px;
+    background:var(--blue);
+    color:white;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.register-button:hover{filter:brightness(1.12)}
+
+.register-button:disabled{
+    opacity:.6;
+    cursor:wait;
+}
+
+.message{
+    display:none;
+    padding:13px;
+    margin-top:18px;
+    border-radius:8px;
+    background:#091a31;
+    color:var(--teal);
+    font-size:13px;
+    text-align:center;
+}
+
+.links{
+    text-align:center;
+    margin-top:23px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:2;
+}
+
+.links a{
+    color:var(--teal);
+    text-decoration:none;
+    font-weight:700;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:var(--muted);
+    background:#050f1e;
+    font-size:12px;
+}
+
+@media(max-width:500px){
+    .container{padding:25px 18px}
+    .heading h1{font-size:26px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">LEARN<span>OVA</span></div>
+</header>
+
+<main>
+
+<div class="container">
+
+    <div class="heading">
+        <h1>Create Your <span>Account</span></h1>
+        <p>Become a part of the LEARNOVA community.</p>
+    </div>
+
+    <form id="registerForm">
+
+        <label for="fullName">Full Name</label>
+        <input
+            type="text"
+            id="fullName"
+            placeholder="Enter your full name"
+            maxlength="150"
+            autocomplete="name"
+            required
+        >
+
+        <label for="email">Email Address</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+        >
+
+        <label for="role">Choose Account Type</label>
+        <select id="role" required>
+            <option value="student">Student – Classes 8 to 12</option>
+            <option value="teacher">Teacher</option>
+            <option value="school">School</option>
+            <option value="industry_partner">Industry Partner</option>
+        </select>
+
+        <p class="hint">
+            Admin accounts are created separately by the platform owner.
+        </p>
+
+        <label for="password">Create Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="At least 8 characters"
+            minlength="8"
+            maxlength="128"
+            autocomplete="new-password"
+            required
+        >
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Re-enter your password"
+            minlength="8"
+            maxlength="128"
+            autocomplete="new-password"
+            required
+        >
+
+        <button
+            type="submit"
+            class="register-button"
+            id="registerButton">
+            Create Account →
+        </button>
+
+        <div class="message"
+             id="message"
+             role="status"
+             aria-live="polite">
+        </div>
+
+    </form>
+
+    <div class="links">
+        Already have an account?
+        <a href="login.html">Login here</a>
+        <br>
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+</div>
+
+</main>
+
+<footer>
+    © 2026 LEARNOVA. Learn. Innovate. Connect.
+</footer>
+
+<script>
+
+// Add the deployed Flask backend URL here later.
+// Example: https://your-backend-domain.com
+const API_BASE_URL = "";
+
+const form = document.getElementById("registerForm");
+const message = document.getElementById("message");
+const button = document.getElementById("registerButton");
+
+form.addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    const full_name =
+        document.getElementById("fullName").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const role =
+        document.getElementById("role").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    message.style.display = "block";
+
+    if(password !== confirmPassword){
+        message.textContent = "Passwords do not match.";
+        return;
+    }
+
+    if(password.length < 8){
+        message.textContent =
+            "Password must contain at least 8 characters.";
+        return;
+    }
+
+    button.disabled = true;
+    message.textContent = "Creating your account...";
+
+    try{
+
+        const response = await fetch(
+            `${API_BASE_URL}/api/auth/register`,
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                credentials:"include",
+                body:JSON.stringify({
+                    full_name,
+                    email,
+                    password,
+                    role
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if(!response.ok){
+            throw new Error(
+                data.message || "Registration failed."
+            );
+        }
+
+        message.textContent =
+            "Registration successful! Your account is awaiting admin approval.";
+
+        form.reset();
+
+    }catch(error){
+
+        message.textContent = error.message;
+
+    }finally{
+
+        button.disabled = false;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
