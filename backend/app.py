@@ -5,8 +5,8 @@ from sqlalchemy import text
 from config import Config
 from models import db
 from auth import auth_bp
+from admin import admin_bp
 
-app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app = Flask(__name__)
 
 # Load configuration
@@ -17,6 +17,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Initialize database
 db.init_app(app)
+app.register_blueprint(auth_bp, url_prefix="/api/auth")
+app.register_blueprint(admin_bp, url_prefix="/api/admin")
 
 
 @app.route("/")
